@@ -8,10 +8,9 @@ def cache(func: Callable) -> Callable:
         key = (args, tuple(sorted(kwargs.items())))
         if save_result.get(key, "no_save") != "no_save" :
             print("Getting from cache")
-            return save_result[key]
 
         else:
             save_result[key] = func(*args, **kwargs)
             print("Calculating new result")
-            return save_result[key]
+        return save_result[key]
     return wrapper
